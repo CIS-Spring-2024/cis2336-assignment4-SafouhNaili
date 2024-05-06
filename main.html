@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page - UH Sugarland Cafeteria</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #f8c200;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #ffffff;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333333;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item img {
+            width: 100px;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+
+        .menu-item-info h3 {
+            margin-top: 0;
+            color: #333333;
+        }
+
+        .menu-item-info p {
+            color: #666666;
+        }
+
+        #filterOptions {
+            margin-bottom: 20px;
+        }
+
+        #filterOptions label {
+            margin-right: 10px;
+        }
+
+        #filterBtn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f8c200;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        #filterBtn:hover {
+            background-color: #f0b000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to UH Sugarland Cafeteria</h1>
+        <nav>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html">Owner's Bio</a></li>
+                <li><a href="order.html">Order</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="menuContainer" class="menu-section">
+        </section>
+        <div id="filterOptions">
+            <label for="categoryDropdown">Filter by category:</label>
+            <select id="categoryDropdown">
+                <option value="all">All</option>
+                <option value="spicy">Spicy</option>
+                <option value="classic">Classic</option>
+                <option value="salad">Salad</option>
+            </select>
+            <button id="filterBtn">Apply Filter</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 UH Sugarland Cafeteria. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuItems = [
+            {
+                name: "Spicy Fried Chicken Combo",
+                price: 9.99,
+                description: "Crispy fried chicken coated in our signature spicy seasoning. Served with your choice of side and a drink.",
+                image: "spicycombo.png",
+                category: "spicy"
+            },
+            {
+                name: "Classic Fried Chicken Platter",
+                price: 8.99,
+                description: "Traditional fried chicken, perfectly seasoned for timeless flavor. Comes with your choice of side and a biscuit.",
+                image: "friedchicken.png",
+                category: "classic"
+            },
+            {
+                name: "Garden Salad",
+                price: 5.99,
+                description: "Fresh garden salad with mixed greens, tomatoes, cucumbers, and your choice of dressing.",
+                image: "salad.png",
+                category: "salad"
+            },
+        ];
+
+        function generateMenuItemHTML(item) {
+            return `
+                <div class="menu-item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="menu-item-info">
+                        <h3>${item.name} - $${item.price.toFixed(2)}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function generateMenu(category = "all") {
+            const menuContainer = document.getElementById("menuContainer");
+            menuContainer.innerHTML = "";
+
+            if (category === "all") {
+                menuItems.forEach(item => {
+                    menuContainer.innerHTML += generateMenuItemHTML(item);
+                });
+            } else {
+                const filteredItems = menuItems.filter(item => item.category === category);
+                filteredItems.forEach(item => {
+                    menuContainer.innerHTML += generateMenuItemHTML(item);
+                });
+            }
+        }
+
+        window.onload = function() {
+            generateMenu();
+
+            document.getElementById("filterBtn").addEventListener("click", function() {
+                const category = document.getElementById("categoryDropdown").value;
+                generateMenu(category);
+            });
+        };
+    </script>
+</body>
+</html>
+

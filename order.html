@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form - UH Sugarland Cafeteria</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #f8c200;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #ffffff;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        #orderForm {
+            margin-bottom: 20px;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-item img {
+            width: 100px;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+
+        #submitOrder {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f8c200;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        #submitOrder:hover {
+            background-color: #f0b000;
+        }
+
+        #backToMain {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #333333;
+            text-decoration: none;
+        }
+
+        #backToMain:hover {
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Place Your Order</h1>
+        <a href="main.html" id="backToMain">Back to Main Page</a>
+    </header>
+    <main>
+        <form id="orderForm" action="/order" method="POST">
+            <div class="order-item">
+                <img src="spicycombo.png" alt="Spicy Fried Chicken Combo">
+                <span>Spicy Fried Chicken Combo - $9.99</span>
+                <input type="number" name="Spicy Fried Chicken Combo" min="0" max="10" value="0">
+            </div>
+            <div class="order-item">
+                <img src="friedchicken.png" alt="Classic Fried Chicken Platter">
+                <span>Classic Fried Chicken Platter - $8.99</span>
+                <input type="number" name="Classic Fried Chicken Platter" min="0" max="10" value="0">
+            </div>
+            <div class="order-item">
+                <img src="salad.png" alt="Garden Salad">
+                <span>Garden Salad - $5.99</span>
+                <input type="number" name="Garden Salad" min="0" max="10" value="0">
+            </div>
+            <button id="submitOrder" type="submit">Submit Order</button>
+        </form>
+    </main>
+
+    <script>
+        
+    </script>
+</body>
+</html>
